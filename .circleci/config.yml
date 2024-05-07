@@ -16,7 +16,7 @@ jobs:
           command: |
             dotnet test tests
       - persist_to_workspace:
-          root: publish
+          root: ./
           paths:
             - "*"
 workflows:
