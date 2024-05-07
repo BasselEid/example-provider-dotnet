@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+$application_name=$s1
+
 if [ "$version" != "" ] && [ "$latest" != "" ]; then
   echo "ERROR: specify only 'version' or 'latest', not both."
   exit 1

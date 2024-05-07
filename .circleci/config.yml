@@ -22,7 +22,7 @@ jobs:
       - run:
           name: pact
           command: |
-            bash .circleci/canideploy.sh
+            bash .circleci/canideploy.sh providerdotnet
 
   # pactflow:
   #   <<: *defaults
