@@ -4,44 +4,22 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 jobs:
-  test:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      # Replace this with a real test runner invocation
-      - run:
-          name: Run tests
-          command: echo 'replace me with real tests!' && false
   build:
     docker:
-      - image: cimg/base:stable
+      - image: mcr.microsoft.com/dotnet/core/sdk:2.1.607-stretch
+    environment:
+      PACKAGE_VERSION: 1.3.<< pipeline.number >>
     steps:
       - checkout
-      # Replace this with steps to build a package, or executable
       - run:
-          name: Build an artifact
-          command: touch example.txt
-      - store_artifacts:
-          path: example.txt
-  deploy:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
-      - run:
-          name: found github actions config
-          command: ':'
+          name: Build
+          command: |
+            dotnet test tests"
+      - persist_to_workspace:
+          root: publish
+          paths:
+            - "*"
 workflows:
   example:
     jobs:
       - test
-      - build:
-          requires:
-            - test
-      - deploy:
-          requires:
-            - test
