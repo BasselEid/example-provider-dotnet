@@ -21,12 +21,12 @@ jobs:
             - "*"
 
   pactflow:
-    steps:
-      - run:
-          name: pact
-          command: |
-            bash canideploy.sh
-            
+      steps:
+        - run:
+            name: pact
+            command: |
+              bash canideploy.sh
+
 workflows:
   example:
     jobs:
