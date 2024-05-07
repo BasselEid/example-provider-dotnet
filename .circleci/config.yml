@@ -19,13 +19,16 @@ jobs:
           root: ./
           paths:
             - "*"
+
   pactflow:
     steps:
       - run:
           name: pact
           command: |
             bash canideploy.sh
+            
 workflows:
   example:
     jobs:
       - test
+      - pactflow
