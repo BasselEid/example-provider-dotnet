@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 application_name=$1
+to_environment=production
 
 if [ "$version" != "" ] && [ "$latest" != "" ]; then
   echo "ERROR: specify only 'version' or 'latest', not both."
