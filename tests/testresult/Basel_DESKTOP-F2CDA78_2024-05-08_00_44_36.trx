@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="8591ac00-7071-4e66-b2a4-eb8a10dce73e" name="Basel@DESKTOP-F2CDA78 2024-05-08 00:44:36" runUser="DESKTOP-F2CDA78\Basel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-05-08T00:44:36.4853326+02:00" queuing="2024-05-08T00:44:36.4853327+02:00" start="2024-05-08T00:44:31.8993483+02:00" finish="2024-05-08T00:44:36.4879510+02:00" />
+  <TestSettings name="default" id="db085676-8760-455d-b3a0-241372cc6784">
+    <Deployment runDeploymentRoot="Basel_DESKTOP-F2CDA78_2024-05-08_00_44_36" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="858cd9c8-08bf-4fe0-841c-38db9634210a" testId="b68110a6-8728-0243-7896-6d4cf38ca217" testName="tests.ProviderApiTests.EnsureProviderApiHonoursPactWithConsumer" computerName="DESKTOP-F2CDA78" duration="00:00:04.1128024" startTime="2024-05-08T00:44:36.4140000+02:00" endTime="2024-05-08T00:44:36.4140165+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="858cd9c8-08bf-4fe0-841c-38db9634210a">
+      <Output>
+        <StdOut>TEST&#xD;
+_providerUri: http://localhost:9000&#xD;
+pactbaseUrl: https://beso.pactflow.io&#xD;
+token: a0txy_Q79oE5-EDUSMvr_g&#xD;
+pactUrl: &#xD;
+pactFile: &#xD;
+providerName: pactflow-example-provider&#xD;
+version: &#xD;
+branch: &#xD;
+buildUri: //actions/runs/&#xD;
+Starting verification...&#xD;
+Pact verification successful
+&#xD;
+Verifier Output&#xD;
+---------------&#xD;
+The pact at https://beso.pactflow.io/pacts/provider/pactflow-example-provider/consumer/pactflow-example-consumer/pact-version/aae9b5df66271dda29f9921e5e7de419c16db5a4 is being verified because the pact content belongs to the consumer versions matching the following criteria:
+    * consumer version(s) currently deployed to production (ebc05bb32a2ae5b2d5ca79d4d0d37bcf7929a207)
+    * latest version from the main branch 'master' (ebc05bb32a2ae5b2d5ca79d4d0d37bcf7929a207)
+This pact has previously been successfully verified by pactflow-example-provider. If this verification fails, it will fail the build. Read more at https://docs.pact.io/go/pending
+
+Verifying a pact between pactflow-example-consumer and pactflow-example-provider
+
+  a request to get a product
+     Given a product with ID 10 exists
+    returns a response which
+      has status code 200 (OK)
+      includes headers
+        "Content-Type" with value "application/json; charset=utf-8" (OK)
+      has a matching body (OK)
+
+  a request to get a product
+     Given a product with ID 11 does not exist
+    returns a response which
+      has status code 404 (OK)
+      has a matching body (OK)
+
+  a request to get all products
+     Given products exist
+    returns a response which
+      has status code 200 (OK)
+      includes headers
+        "Content-Type" with value "application/json; charset=utf-8" (OK)
+      has a matching body (OK)
+
+&#xD;
+Verifier Logs&#xD;
+-------------&#xD;
+2024-05-07T22:44:32.349429Z  INFO ThreadId(01) pact_verifier::pact_broker: Fetching path '/' from pact broker
+2024-05-07T22:44:32.349504Z DEBUG ThreadId(01) reqwest::connect: starting new connection: https://beso.pactflow.io/    
+2024-05-07T22:44:32.367593Z DEBUG ThreadId(01) hyper::client::connect::http: connecting to 18.173.187.80:443
+2024-05-07T22:44:32.372503Z DEBUG ThreadId(01) hyper::client::connect::http: connected to 18.173.187.80:443
+2024-05-07T22:44:32.372521Z DEBUG ThreadId(01) rustls::client::hs: No cached session for DnsName(DnsName(DnsName("beso.pactflow.io")))    
+2024-05-07T22:44:32.372571Z DEBUG ThreadId(01) rustls::client::hs: Not resuming any session    
+2024-05-07T22:44:32.379266Z DEBUG ThreadId(01) rustls::client::hs: Using ciphersuite TLS13_AES_128_GCM_SHA256    
+2024-05-07T22:44:32.379278Z DEBUG ThreadId(01) rustls::client::tls13: Not resuming    
+2024-05-07T22:44:32.379344Z DEBUG ThreadId(01) rustls::client::tls13: TLS1.3 encrypted extensions: [ServerNameAck, Protocols([6832])]    
+2024-05-07T22:44:32.379349Z DEBUG ThreadId(01) rustls::client::hs: ALPN protocol is Some(b"h2")    
+2024-05-07T22:44:32.381366Z DEBUG ThreadId(01) h2::client: binding client connection
+2024-05-07T22:44:32.381372Z DEBUG ThreadId(01) h2::client: client connection bound
+2024-05-07T22:44:32.381388Z DEBUG ThreadId(01) h2::codec::framed_write: send frame=Settings { flags: (0x0), enable_push: 0, initial_window_size: 2097152, max_frame_size: 16384 }
+2024-05-07T22:44:32.381522Z DEBUG ThreadId(01) hyper::client::pool: pooling idle connection for ("https", beso.pactflow.io)
+2024-05-07T22:44:33.358571Z DEBUG ThreadId(01) pact_verifier::pact_broker: Link URL is templated
+2024-05-07T22:44:33.358598Z DEBUG ThreadId(01) pact_verifier::pact_broker: templated URL = https://beso.pactflow.io/pacts/provider/{provider}/for-verification
+2024-05-07T22:44:33.359184Z DEBUG ThreadId(01) pact_verifier::pact_broker: final URL = https://beso.pactflow.io/pacts/provider/pactflow-example-provider/for-verification
+2024-05-07T22:44:33.359211Z  INFO ThreadId(01) pact_verifier::pact_broker: Fetching path '/pacts/provider/pactflow-example-provider/for-verification' from pact broker
+2024-05-07T22:44:33.359231Z DEBUG ThreadId(01) hyper::client::pool: reuse idle connection for ("https", beso.pactflow.io)
+2024-05-07T22:44:34.298648Z DEBUG ThreadId(01) pact_verifier::pact_broker: templated URL = https://beso.pactflow.io/pacts/provider/pactflow-example-provider/for-verification
+2024-05-07T22:44:34.299011Z DEBUG ThreadId(01) pact_verifier::pact_broker: final URL = https://beso.pactflow.io/pacts/provider/pactflow-example-provider/for-verification
+2024-05-07T22:44:34.299027Z DEBUG ThreadId(01) pact_verifier::pact_broker: Sending JSON to https://beso.pactflow.io/pacts/provider/pactflow-example-provider/for-verification using POST: {"providerVersionTags":[],"includePendingStatus":true,"includeWipPactsSince":"2022-01-01","consumerVersionSelectors":[{"deployedOrReleased":true},{"mainBranch":true}]}
+2024-05-07T22:44:34.299054Z DEBUG ThreadId(01) hyper::client::pool: reuse idle connection for ("https", beso.pactflow.io)
+2024-05-07T22:44:35.252544Z  INFO ThreadId(01) pact_verifier::pact_broker: Fetching path '/pacts/provider/pactflow-example-provider/consumer/pactflow-example-consumer/pact-version/aae9b5df66271dda29f9921e5e7de419c16db5a4/metadata/c1tdW2N2XT0zNCZzW11bbF09dHJ1ZSZzW11bY3ZdPTM0JnA9ZmFsc2U' from pact broker
+2024-05-07T22:44:35.252618Z DEBUG ThreadId(01) hyper::client::pool: reuse idle connection for ("https", beso.pactflow.io)
+2024-05-07T22:44:36.229148Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Executing provider states
+2024-05-07T22:44:36.229159Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Running setup provider state change handler 'a product with ID 10 exists' for 'a request to get a product'
+2024-05-07T22:44:36.230909Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Sending HTTP Request ( method: POST, path: /, query: None, headers: Some({"Content-Type": ["application/json"]}), body: Present(68 bytes, application/json) ) to state change handler
+2024-05-07T22:44:36.230957Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: reqwest::connect: starting new connection: http://localhost:9000/    
+2024-05-07T22:44:36.231236Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::connect::http: connecting to [::1]:9000
+2024-05-07T22:44:36.231533Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::connect::http: connected to [::1]:9000
+2024-05-07T22:44:36.249792Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: State change request: Response { url: Url { scheme: "http", cannot_be_a_base: false, username: "", password: None, host: Some(Domain("localhost")), port: Some(9000), path: "/provider-states", query: None, fragment: None }, status: 200, headers: {"date": "Tue, 07 May 2024 22:44:35 GMT", "server": "Kestrel", "transfer-encoding": "chunked"} }
+2024-05-07T22:44:36.249826Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: State Change: "ProviderState { name: "a product with ID 10 exists", params: {} }" -&gt; Ok({})
+2024-05-07T22:44:36.249836Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Running provider verification for 'a request to get a product'
+2024-05-07T22:44:36.249862Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Verifying a HTTP interaction
+2024-05-07T22:44:36.249888Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Sending request to provider at http://localhost:9000/
+2024-05-07T22:44:36.249890Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Provider details = ProviderInfo { name: "pactflow-example-provider", protocol: "http", host: "localhost", port: Some(9000), path: "/", transports: [ProviderTransport { transport: "http", port: Some(9000), path: Some("/"), scheme: None }] }
+2024-05-07T22:44:36.249896Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Sending request HTTP Request ( method: GET, path: /product/10, query: None, headers: Some({"Authorization": ["Bearer 2019-01-14T11:34:18.045Z"]}), body: Missing )
+2024-05-07T22:44:36.249899Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: body:
+
+2024-05-07T22:44:36.249914Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::pool: reuse idle connection for ("http", localhost:9000)
+2024-05-07T22:44:36.271940Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Received native response: Response { url: Url { scheme: "http", cannot_be_a_base: false, username: "", password: None, host: Some(Domain("localhost")), port: Some(9000), path: "/product/10", query: None, fragment: None }, status: 200, headers: {"content-type": "application/json; charset=utf-8", "date": "Tue, 07 May 2024 22:44:35 GMT", "server": "Kestrel", "transfer-encoding": "chunked"} }
+2024-05-07T22:44:36.272652Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Received response: HTTP Response ( status: 200, headers: Some({"transfer-encoding": ["chunked"], "server": ["Kestrel"], "content-type": ["application/json; charset=utf-8"], "date": ["Tue", "07 May 2024 22:44:35 GMT"]}), body: Present(82 bytes, application/json;charset=utf-8) )
+2024-05-07T22:44:36.272659Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: body:
+{"type":"CREDIT_CARD","name":"28 Degrees","id":"10","version":"v1","color":"blue"}
+2024-05-07T22:44:36.272670Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: comparing to expected response: HTTP Response ( status: 200, headers: Some({"Content-Type": ["application/json; charset=utf-8"]}), body: Present(66 bytes) )
+2024-05-07T22:44:36.272705Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: expected content type = 'application/json;charset=utf-8', actual content type = 'application/json;charset=utf-8'
+2024-05-07T22:44:36.272802Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: content type header matcher = 'RuleList { rules: [], rule_logic: And, cascaded: false }'
+2024-05-07T22:44:36.272814Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_plugin_driver::catalogue_manager: Looking for a content matcher for application/json;charset=utf-8
+2024-05-07T22:44:36.272974Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: No content matcher defined for content type 'application/json;charset=utf-8', using core matcher implementation
+2024-05-07T22:44:36.272978Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: Using body matcher for content type 'application/json;charset=utf-8'
+2024-05-07T22:44:36.272989Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare: Comparing path $
+2024-05-07T22:44:36.272991Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_maps: Comparing maps at $: {"color": String("red"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")} -&gt; {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")}
+2024-05-07T22:44:36.273005Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_maps: Matcher is defined for path $
+2024-05-07T22:44:36.273025Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare: Comparing path $.color
+2024-05-07T22:44:36.273027Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Calling match_values for path $.color
+2024-05-07T22:44:36.273031Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: JSON -&gt; JSON: Comparing '"red"' to '"blue"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.273038Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Comparing 'String("red")' to 'String("blue")' at path '$.color' -&gt; Ok(())
+2024-05-07T22:44:36.273039Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare: Comparing path $.id
+2024-05-07T22:44:36.273040Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Calling match_values for path $.id
+2024-05-07T22:44:36.273041Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: JSON -&gt; JSON: Comparing '"10"' to '"10"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.273042Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Comparing 'String("10")' to 'String("10")' at path '$.id' -&gt; Ok(())
+2024-05-07T22:44:36.273043Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare: Comparing path $.name
+2024-05-07T22:44:36.273044Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Calling match_values for path $.name
+2024-05-07T22:44:36.273045Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: JSON -&gt; JSON: Comparing '"28 Degrees"' to '"28 Degrees"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.273046Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Comparing 'String("28 Degrees")' to 'String("28 Degrees")' at path '$.name' -&gt; Ok(())
+2024-05-07T22:44:36.273047Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare: Comparing path $.type
+2024-05-07T22:44:36.273048Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Calling match_values for path $.type
+2024-05-07T22:44:36.273049Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: JSON -&gt; JSON: Comparing '"CREDIT_CARD"' to '"CREDIT_CARD"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.273050Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching::json: compare_values: Comparing 'String("CREDIT_CARD")' to 'String("CREDIT_CARD")' at path '$.type' -&gt; Ok(())
+2024-05-07T22:44:36.274134Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Executing provider states
+2024-05-07T22:44:36.274137Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Running setup provider state change handler 'a product with ID 11 does not exist' for 'a request to get a product'
+2024-05-07T22:44:36.275082Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Sending HTTP Request ( method: POST, path: /, query: None, headers: Some({"Content-Type": ["application/json"]}), body: Present(76 bytes, application/json) ) to state change handler
+2024-05-07T22:44:36.275099Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: reqwest::connect: starting new connection: http://localhost:9000/    
+2024-05-07T22:44:36.275302Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::connect::http: connecting to [::1]:9000
+2024-05-07T22:44:36.300107Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::connect::http: connected to [::1]:9000
+2024-05-07T22:44:36.300576Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::pool: pooling idle connection for ("http", localhost:9000)
+2024-05-07T22:44:36.300586Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: State change request: Response { url: Url { scheme: "http", cannot_be_a_base: false, username: "", password: None, host: Some(Domain("localhost")), port: Some(9000), path: "/provider-states", query: None, fragment: None }, status: 200, headers: {"date": "Tue, 07 May 2024 22:44:35 GMT", "server": "Kestrel", "transfer-encoding": "chunked"} }
+2024-05-07T22:44:36.300599Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: State Change: "ProviderState { name: "a product with ID 11 does not exist", params: {} }" -&gt; Ok({})
+2024-05-07T22:44:36.300601Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Running provider verification for 'a request to get a product'
+2024-05-07T22:44:36.300608Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier: Verifying a HTTP interaction
+2024-05-07T22:44:36.300618Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Sending request to provider at http://localhost:9000/
+2024-05-07T22:44:36.300619Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Provider details = ProviderInfo { name: "pactflow-example-provider", protocol: "http", host: "localhost", port: Some(9000), path: "/", transports: [ProviderTransport { transport: "http", port: Some(9000), path: Some("/"), scheme: None }] }
+2024-05-07T22:44:36.300624Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Sending request HTTP Request ( method: GET, path: /product/11, query: None, headers: Some({"Authorization": ["Bearer 2019-01-14T11:34:18.045Z"]}), body: Missing )
+2024-05-07T22:44:36.300625Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: body:
+
+2024-05-07T22:44:36.300634Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::pool: reuse idle connection for ("http", localhost:9000)
+2024-05-07T22:44:36.301937Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: hyper::client::pool: pooling idle connection for ("http", localhost:9000)
+2024-05-07T22:44:36.301945Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Received native response: Response { url: Url { scheme: "http", cannot_be_a_base: false, username: "", password: None, host: Some(Domain("localhost")), port: Some(9000), path: "/product/11", query: None, fragment: None }, status: 404, headers: {"content-length": "0", "date": "Tue, 07 May 2024 22:44:35 GMT", "server": "Kestrel"} }
+2024-05-07T22:44:36.301958Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: Received response: HTTP Response ( status: 404, headers: Some({"date": ["Tue", "07 May 2024 22:44:35 GMT"], "server": ["Kestrel"], "content-length": ["0"]}), body: Empty )
+2024-05-07T22:44:36.301961Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_verifier::provider_client: body:
+
+2024-05-07T22:44:36.301966Z  INFO ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: comparing to expected response: HTTP Response ( status: 404, headers: None, body: Missing )
+2024-05-07T22:44:36.301975Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: expected content type = '*/*', actual content type = '*/*'
+2024-05-07T22:44:36.301980Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get a product"}: pact_matching: content type header matcher = 'RuleList { rules: [], rule_logic: And, cascaded: false }'
+2024-05-07T22:44:36.303054Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier: Executing provider states
+2024-05-07T22:44:36.303057Z  INFO ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier: Running setup provider state change handler 'products exist' for 'a request to get all products'
+2024-05-07T22:44:36.304023Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: Sending HTTP Request ( method: POST, path: /, query: None, headers: Some({"Content-Type": ["application/json"]}), body: Present(55 bytes, application/json) ) to state change handler
+2024-05-07T22:44:36.304037Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: reqwest::connect: starting new connection: http://localhost:9000/    
+2024-05-07T22:44:36.304151Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: hyper::client::connect::http: connecting to [::1]:9000
+2024-05-07T22:44:36.316129Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: hyper::client::connect::http: connected to [::1]:9000
+2024-05-07T22:44:36.316581Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: State change request: Response { url: Url { scheme: "http", cannot_be_a_base: false, username: "", password: None, host: Some(Domain("localhost")), port: Some(9000), path: "/provider-states", query: None, fragment: None }, status: 200, headers: {"date": "Tue, 07 May 2024 22:44:35 GMT", "server": "Kestrel", "transfer-encoding": "chunked"} }
+2024-05-07T22:44:36.316597Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier: State Change: "ProviderState { name: "products exist", params: {} }" -&gt; Ok({})
+2024-05-07T22:44:36.316599Z  INFO ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier: Running provider verification for 'a request to get all products'
+2024-05-07T22:44:36.316607Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier: Verifying a HTTP interaction
+2024-05-07T22:44:36.316615Z  INFO ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: Sending request to provider at http://localhost:9000/
+2024-05-07T22:44:36.316616Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: Provider details = ProviderInfo { name: "pactflow-example-provider", protocol: "http", host: "localhost", port: Some(9000), path: "/", transports: [ProviderTransport { transport: "http", port: Some(9000), path: Some("/"), scheme: None }] }
+2024-05-07T22:44:36.316618Z  INFO ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: Sending request HTTP Request ( method: GET, path: /products, query: None, headers: Some({"Authorization": ["Bearer 2019-01-14T11:34:18.045Z"]}), body: Missing )
+2024-05-07T22:44:36.316619Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: body:
+
+2024-05-07T22:44:36.316630Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: hyper::client::pool: reuse idle connection for ("http", localhost:9000)
+2024-05-07T22:44:36.317997Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: Received native response: Response { url: Url { scheme: "http", cannot_be_a_base: false, username: "", password: None, host: Some(Domain("localhost")), port: Some(9000), path: "/products", query: None, fragment: None }, status: 200, headers: {"content-type": "application/json; charset=utf-8", "date": "Tue, 07 May 2024 22:44:35 GMT", "server": "Kestrel", "transfer-encoding": "chunked"} }
+2024-05-07T22:44:36.318032Z  INFO ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: Received response: HTTP Response ( status: 200, headers: Some({"transfer-encoding": ["chunked"], "date": ["Tue", "07 May 2024 22:44:35 GMT"], "content-type": ["application/json; charset=utf-8"], "server": ["Kestrel"]}), body: Present(400 bytes, application/json;charset=utf-8) )
+2024-05-07T22:44:36.318038Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_verifier::provider_client: body:
+[{"type":"food","name":"pancake","id":"1","version":"1.0.0","color":"blue"},{"type":"food","name":"sanwhich","id":"2","version":"1.0.0","color":"red"},{"type":"CREDIT_CARD","name":"28 Degrees","id":"10","version":"v1","color":"blue"},{"type":"CREDIT_CARD","name":"28 Degrees","id":"10","version":"v1","color":"blue"},{"type":"CREDIT_CARD","name":"28 Degrees","id":"10","version":"v1","color":"blue"}]
+2024-05-07T22:44:36.318045Z  INFO ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching: comparing to expected response: HTTP Response ( status: 200, headers: Some({"Content-Type": ["application/json; charset=utf-8"]}), body: Present(54 bytes) )
+2024-05-07T22:44:36.318053Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching: expected content type = 'application/json;charset=utf-8', actual content type = 'application/json;charset=utf-8'
+2024-05-07T22:44:36.318057Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching: content type header matcher = 'RuleList { rules: [], rule_logic: And, cascaded: false }'
+2024-05-07T22:44:36.318060Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_plugin_driver::catalogue_manager: Looking for a content matcher for application/json;charset=utf-8
+2024-05-07T22:44:36.318199Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching: No content matcher defined for content type 'application/json;charset=utf-8', using core matcher implementation
+2024-05-07T22:44:36.318201Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching: Using body matcher for content type 'application/json;charset=utf-8'
+2024-05-07T22:44:36.318208Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $
+2024-05-07T22:44:36.318215Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_lists: matcher defined for path '$'
+2024-05-07T22:44:36.318216Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::matchingrules: slice -&gt; slice: comparing [serde_json::value::Value] to [serde_json::value::Value] using Type
+2024-05-07T22:44:36.318218Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::matchingrules: Comparing '[Object {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")}]' to '[Object {"color": String("blue"), "id": String("1"), "name": String("pancake"), "type": String("food"), "version": String("1.0.0")}, Object {"color": String("red"), "id": String("2"), "name": String("sanwhich"), "type": String("food"), "version": String("1.0.0")}, Object {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")}, Object {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")}, Object {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")}]' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318229Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::matchingrules: Comparing list item 0 with value 'Some(Object {"color": String("blue"), "id": String("1"), "name": String("pancake"), "type": String("food"), "version": String("1.0.0")})' to 'Object {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")}'
+2024-05-07T22:44:36.318232Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[0]
+2024-05-07T22:44:36.318233Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Comparing maps at $[0]: {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")} -&gt; {"color": String("blue"), "id": String("1"), "name": String("pancake"), "type": String("food"), "version": String("1.0.0")}
+2024-05-07T22:44:36.318239Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Matcher is defined for path $[0]
+2024-05-07T22:44:36.318244Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[0].id
+2024-05-07T22:44:36.318246Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[0].id
+2024-05-07T22:44:36.318247Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"10"' to '"1"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318248Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("10")' to 'String("1")' at path '$[0].id' -&gt; Ok(())
+2024-05-07T22:44:36.318250Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[0].name
+2024-05-07T22:44:36.318251Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[0].name
+2024-05-07T22:44:36.318252Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"28 Degrees"' to '"pancake"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318253Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("28 Degrees")' to 'String("pancake")' at path '$[0].name' -&gt; Ok(())
+2024-05-07T22:44:36.318254Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[0].type
+2024-05-07T22:44:36.318255Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[0].type
+2024-05-07T22:44:36.318256Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"CREDIT_CARD"' to '"food"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318257Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("CREDIT_CARD")' to 'String("food")' at path '$[0].type' -&gt; Ok(())
+2024-05-07T22:44:36.318259Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::matchingrules: Comparing list item 1 with value 'Some(Object {"color": String("red"), "id": String("2"), "name": String("sanwhich"), "type": String("food"), "version": String("1.0.0")})' to 'Object {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")}'
+2024-05-07T22:44:36.318261Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[1]
+2024-05-07T22:44:36.318262Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Comparing maps at $[1]: {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")} -&gt; {"color": String("red"), "id": String("2"), "name": String("sanwhich"), "type": String("food"), "version": String("1.0.0")}
+2024-05-07T22:44:36.318265Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Matcher is defined for path $[1]
+2024-05-07T22:44:36.318268Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[1].id
+2024-05-07T22:44:36.318269Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[1].id
+2024-05-07T22:44:36.318270Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"10"' to '"2"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318271Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("10")' to 'String("2")' at path '$[1].id' -&gt; Ok(())
+2024-05-07T22:44:36.318272Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[1].name
+2024-05-07T22:44:36.318273Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[1].name
+2024-05-07T22:44:36.318274Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"28 Degrees"' to '"sanwhich"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318274Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("28 Degrees")' to 'String("sanwhich")' at path '$[1].name' -&gt; Ok(())
+2024-05-07T22:44:36.318278Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[1].type
+2024-05-07T22:44:36.318279Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[1].type
+2024-05-07T22:44:36.318280Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"CREDIT_CARD"' to '"food"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318281Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("CREDIT_CARD")' to 'String("food")' at path '$[1].type' -&gt; Ok(())
+2024-05-07T22:44:36.318282Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::matchingrules: Comparing list item 2 with value 'Some(Object {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")})' to 'Object {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")}'
+2024-05-07T22:44:36.318284Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[2]
+2024-05-07T22:44:36.318285Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Comparing maps at $[2]: {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")} -&gt; {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")}
+2024-05-07T22:44:36.318288Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Matcher is defined for path $[2]
+2024-05-07T22:44:36.318291Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[2].id
+2024-05-07T22:44:36.318292Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[2].id
+2024-05-07T22:44:36.318293Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"10"' to '"10"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318293Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("10")' to 'String("10")' at path '$[2].id' -&gt; Ok(())
+2024-05-07T22:44:36.318294Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[2].name
+2024-05-07T22:44:36.318295Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[2].name
+2024-05-07T22:44:36.318296Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"28 Degrees"' to '"28 Degrees"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318297Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("28 Degrees")' to 'String("28 Degrees")' at path '$[2].name' -&gt; Ok(())
+2024-05-07T22:44:36.318298Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[2].type
+2024-05-07T22:44:36.318299Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[2].type
+2024-05-07T22:44:36.318300Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"CREDIT_CARD"' to '"CREDIT_CARD"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318301Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("CREDIT_CARD")' to 'String("CREDIT_CARD")' at path '$[2].type' -&gt; Ok(())
+2024-05-07T22:44:36.318302Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::matchingrules: Comparing list item 3 with value 'Some(Object {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")})' to 'Object {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")}'
+2024-05-07T22:44:36.318304Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[3]
+2024-05-07T22:44:36.318305Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Comparing maps at $[3]: {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")} -&gt; {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")}
+2024-05-07T22:44:36.318308Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Matcher is defined for path $[3]
+2024-05-07T22:44:36.318310Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[3].id
+2024-05-07T22:44:36.318311Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[3].id
+2024-05-07T22:44:36.318312Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"10"' to '"10"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318313Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("10")' to 'String("10")' at path '$[3].id' -&gt; Ok(())
+2024-05-07T22:44:36.318314Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[3].name
+2024-05-07T22:44:36.318315Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[3].name
+2024-05-07T22:44:36.318316Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"28 Degrees"' to '"28 Degrees"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318317Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("28 Degrees")' to 'String("28 Degrees")' at path '$[3].name' -&gt; Ok(())
+2024-05-07T22:44:36.318318Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[3].type
+2024-05-07T22:44:36.318319Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[3].type
+2024-05-07T22:44:36.318320Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"CREDIT_CARD"' to '"CREDIT_CARD"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318321Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("CREDIT_CARD")' to 'String("CREDIT_CARD")' at path '$[3].type' -&gt; Ok(())
+2024-05-07T22:44:36.318322Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::matchingrules: Comparing list item 4 with value 'Some(Object {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")})' to 'Object {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")}'
+2024-05-07T22:44:36.318324Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[4]
+2024-05-07T22:44:36.318325Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Comparing maps at $[4]: {"id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD")} -&gt; {"color": String("blue"), "id": String("10"), "name": String("28 Degrees"), "type": String("CREDIT_CARD"), "version": String("v1")}
+2024-05-07T22:44:36.318328Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_maps: Matcher is defined for path $[4]
+2024-05-07T22:44:36.318330Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[4].id
+2024-05-07T22:44:36.318331Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[4].id
+2024-05-07T22:44:36.318332Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"10"' to '"10"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318333Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("10")' to 'String("10")' at path '$[4].id' -&gt; Ok(())
+2024-05-07T22:44:36.318334Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[4].name
+2024-05-07T22:44:36.318335Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[4].name
+2024-05-07T22:44:36.318336Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"28 Degrees"' to '"28 Degrees"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318337Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("28 Degrees")' to 'String("28 Degrees")' at path '$[4].name' -&gt; Ok(())
+2024-05-07T22:44:36.318338Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare: Comparing path $[4].type
+2024-05-07T22:44:36.318339Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Calling match_values for path $[4].type
+2024-05-07T22:44:36.318340Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: JSON -&gt; JSON: Comparing '"CREDIT_CARD"' to '"CREDIT_CARD"' using Type -&gt; Ok(())
+2024-05-07T22:44:36.318341Z DEBUG ThreadId(01) verify_interaction{interaction="a request to get all products"}: pact_matching::json: compare_values: Comparing 'String("CREDIT_CARD")' to 'String("CREDIT_CARD")' at path '$[4].type' -&gt; Ok(())
+2024-05-07T22:44:36.318400Z  WARN ThreadId(01) pact_matching::metrics: 
+
+Please note:
+We are tracking events anonymously to gather important usage statistics like Pact version and operating system. To disable tracking, set the 'PACT_DO_NOT_TRACK' environment variable to 'true'.
+
+
+2024-05-07T22:44:36.318420Z DEBUG ThreadId(01) pact_matching::metrics: Sending event to GA - {"an": "pact-net", "el": "Pacts verified", "aid": "pact-net", "cd2": "unknown", "cid": "6d282df417636f07313cd943d4133b7c", "aip": "true", "av": "4.5.0.0", "tid": "UA-117778936-1", "ds": "client", "ev": "3", "cd7": "1.0.4", "cd6": "pact_ffi", "v": "1", "cd3": "windows-x86_64", "t": "event", "ec": "ProviderTest", "ea": "Completed"}
+2024-05-07T22:44:36.319467Z DEBUG ThreadId(01) reqwest::connect: starting new connection: https://www.google-analytics.com/    
+2024-05-07T22:44:36.328294Z DEBUG ThreadId(01) hyper::client::connect::http: connecting to [2a00:1450:4001:811::200e]:443
+2024-05-07T22:44:36.348024Z DEBUG ThreadId(01) hyper::client::connect::http: connected to [2a00:1450:4001:811::200e]:443
+2024-05-07T22:44:36.348034Z DEBUG ThreadId(01) rustls::client::hs: No cached session for DnsName(DnsName(DnsName("www.google-analytics.com")))    
+2024-05-07T22:44:36.348058Z DEBUG ThreadId(01) rustls::client::hs: Not resuming any session    
+2024-05-07T22:44:36.365582Z DEBUG ThreadId(01) rustls::client::hs: Using ciphersuite TLS13_AES_256_GCM_SHA384    
+2024-05-07T22:44:36.365590Z DEBUG ThreadId(01) rustls::client::tls13: Not resuming    
+2024-05-07T22:44:36.365709Z DEBUG ThreadId(01) rustls::client::tls13: TLS1.3 encrypted extensions: [Protocols([6832])]    
+2024-05-07T22:44:36.365712Z DEBUG ThreadId(01) rustls::client::hs: ALPN protocol is Some(b"h2")    
+2024-05-07T22:44:36.365899Z DEBUG ThreadId(01) h2::client: binding client connection
+2024-05-07T22:44:36.365902Z DEBUG ThreadId(01) h2::client: client connection bound
+2024-05-07T22:44:36.365904Z DEBUG ThreadId(01) h2::codec::framed_write: send frame=Settings { flags: (0x0), enable_push: 0, initial_window_size: 2097152, max_frame_size: 16384 }
+2024-05-07T22:44:36.365948Z DEBUG ThreadId(01) hyper::client::pool: pooling idle connection for ("https", www.google-analytics.com)
+2024-05-07T22:44:36.399928Z DEBUG ThreadId(01) pact_plugin_driver::plugin_manager: Shutting down all plugins</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="tests.ProviderApiTests.EnsureProviderApiHonoursPactWithConsumer" storage="c:\users\basel\zource\example-provider-dotnet\tests\bin\debug\net8.0\tests.dll" id="b68110a6-8728-0243-7896-6d4cf38ca217">
+      <Execution id="858cd9c8-08bf-4fe0-841c-38db9634210a" />
+      <TestMethod codeBase="C:\Users\Basel\Zource\example-provider-dotnet\tests\bin\Debug\net8.0\tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="tests.ProviderApiTests" name="EnsureProviderApiHonoursPactWithConsumer" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b68110a6-8728-0243-7896-6d4cf38ca217" executionId="858cd9c8-08bf-4fe0-841c-38db9634210a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.3+1b45f5407b (64-bit .NET 8.0.4)&#xD;
+[xUnit.net 00:00:00.19]   Discovering: tests&#xD;
+[xUnit.net 00:00:00.20]   Discovered:  tests&#xD;
+[xUnit.net 00:00:00.20]   Starting:    tests&#xD;
+[xUnit.net 00:00:04.33]   Finished:    tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

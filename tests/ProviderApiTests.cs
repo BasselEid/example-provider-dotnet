@@ -23,10 +23,10 @@ namespace tests
         {
             _outputHelper = output;
             _providerUri = "http://localhost:9000";
-            _pactServiceUri = "http://localhost:9001";
+            _pactServiceUri = "http://localhost:9000";
 
             _webHost = WebHost.CreateDefaultBuilder()
-                .UseUrls(_pactServiceUri)
+                .UseUrls(_providerUri)
                 .UseStartup<TestStartup>()
                 .Build();
 
@@ -54,15 +54,27 @@ namespace tests
             };
 
             IPactVerifier pactVerifier = new PactVerifier(config);
+            string pactbaseUrl = System.Environment.GetEnvironmentVariable("PACT_BROKER_BASE_URL");
             string pactUrl = System.Environment.GetEnvironmentVariable("PACT_URL");
             string pactFile = System.Environment.GetEnvironmentVariable("PACT_FILE");
             string providerName = !String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME"))
                                     ? System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME")
-                                    : "pactflow-example-provider-dotnet";
+                                    : "pactflow-example-provider";
             string version = Environment.GetEnvironmentVariable("GIT_COMMIT");
             string branch = Environment.GetEnvironmentVariable("GIT_BRANCH");
+            string token = System.Environment.GetEnvironmentVariable("PACT_BROKER_TOKEN");
             string buildUri = $"{Environment.GetEnvironmentVariable("GITHUB_SERVER_URL")}/{Environment.GetEnvironmentVariable("GITHUB_REPOSITORY")}/actions/runs/{Environment.GetEnvironmentVariable("GITHUB_RUN_ID")}";
 
+            _outputHelper.WriteLine($"TEST"); 
+            _outputHelper.WriteLine($"_providerUri: {_providerUri}"); 
+            _outputHelper.WriteLine($"pactbaseUrl: {pactbaseUrl}"); 
+            _outputHelper.WriteLine($"token: {token}"); 
+            _outputHelper.WriteLine($"pactUrl: {pactUrl}"); 
+            _outputHelper.WriteLine($"pactFile: {pactFile}"); 
+            _outputHelper.WriteLine($"providerName: {providerName}"); 
+            _outputHelper.WriteLine($"version: {version}"); 
+            _outputHelper.WriteLine($"branch: {branch}"); 
+            _outputHelper.WriteLine($"buildUri: {buildUri}");
 
             if (pactFile != "" && pactFile != null)
             // Verify a local file, provided by PACT_FILE, verification results are never published
@@ -107,22 +119,22 @@ namespace tests
                     {
                         options.ConsumerVersionSelectors(
                                     new ConsumerVersionSelector { DeployedOrReleased = true },
-                                    new ConsumerVersionSelector { MainBranch = true },
-                                    new ConsumerVersionSelector { MatchingBranch = true }
+                                    new ConsumerVersionSelector { MainBranch = true }//,
+                                    //new ConsumerVersionSelector { MatchingBranch = true }
                                 )
-                                .ProviderBranch(branch)
-                                .PublishResults(!String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_BROKER_PUBLISH_VERIFICATION_RESULTS")), version, results =>
-                                {
-                                    results.ProviderBranch(branch)
-                                   .BuildUri(new Uri(buildUri));
-                                })
+                                // .ProviderBranch(branch)
+                                // .PublishResults(!String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_BROKER_PUBLISH_VERIFICATION_RESULTS")), version, results =>
+                                // {
+                                //     results.ProviderBranch(branch)
+                                //    .BuildUri(new Uri(buildUri));
+                                // })
                                 .EnablePending()
                                 .IncludeWipPactsSince(new DateTime(2022, 1, 1));
                         // Conditionally set authentication depending on if you are using an Pact Broker / PactFlow Broker
                         // You may not have credentials with your own broker.
-                        if (!String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_BROKER_TOKEN")))
+                        if (!String.IsNullOrEmpty(token))
                         {
-                            options.TokenAuthentication(System.Environment.GetEnvironmentVariable("PACT_BROKER_TOKEN"));
+                            options.TokenAuthentication(token);
                         }
                         else if (!String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_BROKER_USERNAME")))
                         {

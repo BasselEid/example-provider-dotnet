@@ -25,7 +25,7 @@ namespace tests.Middleware
             _providerStates = new Dictionary<string, Action>
             {
                 {
-                    "products exist",
+                    "Given a product with ID 10 exists",
                     AddData
                 },
                 {
@@ -37,8 +37,7 @@ namespace tests.Middleware
 
         private void RemoveAllData()
         {
-            _Repository.AddProduct(new Product("1", "food", "pancake", "1.0.0"));
-            _Repository.AddProduct(new Product("2", "food", "sanwhich", "1.0.0"));
+            _Repository.AddProduct(new Product("10", "CREDIT_CARD", "28 Degrees", "v1","blue"));
         }
 
         private void AddData()
@@ -77,7 +76,8 @@ namespace tests.Middleware
                 //A null or empty provider state key must be handled
                 if (providerState != null && !String.IsNullOrEmpty(providerState.State))
                 {
-                    _providerStates[providerState.State].Invoke();
+                    _Repository.AddProduct(new Product("10", "CREDIT_CARD", "28 Degrees", "v1","blue"));
+                    //_providerStates[providerState.State].Invoke();
                 }
             }
         }

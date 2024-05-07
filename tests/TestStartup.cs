@@ -20,7 +20,9 @@ namespace tests
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(option => option.EnableEndpointRouting = false);
+            var assembly = typeof(Products.Controllers.ProductsController).Assembly;
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+            .AddApplicationPart(assembly).AddControllersAsServices();
             services.Configure<KestrelServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
