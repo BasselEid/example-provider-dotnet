@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build
+          name: Test
           command: |
             dotnet test tests
       - persist_to_workspace:
@@ -22,7 +22,7 @@ jobs:
       - run:
           name: pact
           command: |
-            bash canideploy.s
+            bash canideploy.sh
 
   # pactflow:
   #   <<: *defaults
