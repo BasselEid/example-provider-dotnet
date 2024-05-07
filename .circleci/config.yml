@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Build
           command: |
-            dotnet test tests"
+            dotnet test tests
       - persist_to_workspace:
           root: publish
           paths:
