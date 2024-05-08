@@ -14,7 +14,6 @@ executors:
 
 jobs:
   test:
-    name: tests
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:8.0
     environment:
@@ -36,8 +35,6 @@ jobs:
 
   pactflow:
     executor: pactfoundation
-    requires: 
-      - tests
     steps:
       - run:
           name: canideploy
@@ -49,4 +46,7 @@ workflows:
   example:
     jobs:
       - test
+        name: tests
       - pactflow
+        required:
+          - tests
