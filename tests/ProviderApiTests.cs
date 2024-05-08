@@ -122,12 +122,12 @@ namespace tests
                                     new ConsumerVersionSelector { MainBranch = true }//,
                                     //new ConsumerVersionSelector { MatchingBranch = true }
                                 )
-                                // .ProviderBranch(branch)
-                                // .PublishResults(!String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_BROKER_PUBLISH_VERIFICATION_RESULTS")), version, results =>
-                                // {
-                                //     results.ProviderBranch(branch)
-                                //    .BuildUri(new Uri(buildUri));
-                                // })
+                                .ProviderBranch(branch)
+                                .PublishResults(!String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_BROKER_PUBLISH_VERIFICATION_RESULTS")), version, results =>
+                                {
+                                    results.ProviderBranch(branch)
+                                   .BuildUri(new Uri(buildUri));
+                                })
                                 .EnablePending()
                                 .IncludeWipPactsSince(new DateTime(2022, 1, 1));
                         // Conditionally set authentication depending on if you are using an Pact Broker / PactFlow Broker
