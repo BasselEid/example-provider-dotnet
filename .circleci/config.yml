@@ -35,6 +35,7 @@ jobs:
 
   pactflow:
     executor: pactfoundation
+    requires: test
     steps:
       - run:
           name: canideploy
