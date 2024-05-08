@@ -48,7 +48,7 @@ jobs:
       - run:
           name: canideploy
           command: |
-            bash .circleci/canideploy.sh providerdotnet
+            bash .circleci/canideploy.sh pactflow-example-provider
 
   # copy:
   #   docker:
