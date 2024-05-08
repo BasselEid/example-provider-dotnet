@@ -45,8 +45,9 @@ jobs:
 workflows:
   example:
     jobs:
-      - test
+      - test:
           name: tests
-      - pactflow
+      - pactflow:
+          name: pact
           required:
             - tests
