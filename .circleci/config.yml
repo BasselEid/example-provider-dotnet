@@ -3,6 +3,15 @@
 # See: https://circleci.com/docs/configuration-reference
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
+
+executors:
+  pactfoundation:
+    docker:
+      - image: pactfoundation/pact-cli
+        environment:
+          PACT_BROKER_BASE_URL: https://beso.pactflow.io
+          PACT_BROKER_TOKEN: a0txy_Q79oE5-EDUSMvr_g
+
 jobs:
   test:
     docker:
@@ -15,22 +24,23 @@ jobs:
           name: Test
           command: |
             dotnet test tests
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - "*"
-      - run:
-          name: pact
-          command: |
-            bash .circleci/canideploy.sh providerdotnet
+      # - persist_to_workspace:
+      #     root: ./
+      #     paths:
+      #       - "*"
+      # - run:
+      #     name: pact
+      #     command: |
+      #       bash .circleci/canideploy.sh providerdotnet
 
-  # pactflow:
-  #   <<: *defaults
-  #     steps:
-  #       - run:
-  #           name: pact
-  #           command: |
-  #             bash canideploy.sh
+  pactflow:
+    executor: pactfoundation
+      steps:
+        - run:
+            name: canideploy
+            command: |
+              PACT_CLI="pact broker can-i-deply --pacticipant providerdotnet --version ${CIRCLE_SHA1} --to-environment production"
+              ${PACT_CLI}
 
 workflows:
   example:
