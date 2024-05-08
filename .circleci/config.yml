@@ -35,12 +35,12 @@ jobs:
 
   pactflow:
     executor: pactfoundation
-      steps:
-        - run:
-            name: canideploy
-            command: |
-              PACT_CLI="pact broker can-i-deply --pacticipant providerdotnet --version ${CIRCLE_SHA1} --to-environment production"
-              ${PACT_CLI}
+    steps:
+      - run:
+          name: canideploy
+          command: |
+            PACT_CLI="pact broker can-i-deply --pacticipant providerdotnet --version ${CIRCLE_SHA1} --to-environment production"
+            ${PACT_CLI}
 
 workflows:
   example:
