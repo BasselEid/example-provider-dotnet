@@ -60,7 +60,7 @@ namespace tests
             string providerName = !String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME"))
                                     ? System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME")
                                     : "pactflow-example-provider";
-            string version = Environment.GetEnvironmentVariable("GIT_COMMIT");
+            string version = Environment.GetEnvironmentVariable("CIRCLE_SHA1");
             string branch = Environment.GetEnvironmentVariable("GIT_BRANCH");
             string token = System.Environment.GetEnvironmentVariable("PACT_BROKER_TOKEN");
             string buildUri = $"{Environment.GetEnvironmentVariable("GITHUB_SERVER_URL")}/{Environment.GetEnvironmentVariable("GITHUB_REPOSITORY")}/actions/runs/{Environment.GetEnvironmentVariable("GITHUB_RUN_ID")}";
