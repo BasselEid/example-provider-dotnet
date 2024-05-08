@@ -55,15 +55,17 @@ namespace tests
 
             IPactVerifier pactVerifier = new PactVerifier(config);
             string pactbaseUrl = System.Environment.GetEnvironmentVariable("PACT_BROKER_BASE_URL");
+            string token = System.Environment.GetEnvironmentVariable("PACT_BROKER_TOKEN");
             string pactUrl = System.Environment.GetEnvironmentVariable("PACT_URL");
             string pactFile = System.Environment.GetEnvironmentVariable("PACT_FILE");
             string providerName = !String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME"))
                                     ? System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME")
                                     : "pactflow-example-provider";
             string version = Environment.GetEnvironmentVariable("CIRCLE_SHA1");
-            string branch = Environment.GetEnvironmentVariable("GIT_BRANCH");
-            string token = System.Environment.GetEnvironmentVariable("PACT_BROKER_TOKEN");
-            string buildUri = $"{Environment.GetEnvironmentVariable("GITHUB_SERVER_URL")}/{Environment.GetEnvironmentVariable("GITHUB_REPOSITORY")}/actions/runs/{Environment.GetEnvironmentVariable("GITHUB_RUN_ID")}";
+            string branch = Environment.GetEnvironmentVariable("GIT_BRANCH") ?? "master";
+            string buildUri = 
+            $"{Environment.GetEnvironmentVariable("GITHUB_SERVER_URL")}/{Environment.GetEnvironmentVariable("GITHUB_REPOSITORY")}/actions/runs/{Environment.GetEnvironmentVariable("GITHUB_RUN_ID")}"
+            ?? "https://app.circleci.com/pipelines/circleci/9QK2WWwgECjVB83qrWvPy8/6dRyVh4KAAPRvjsUr9sN1X/39/workflows/402fd970-7804-49f0-99ca-3cdc553aaccd";
 
             _outputHelper.WriteLine($"TEST"); 
             _outputHelper.WriteLine($"_providerUri: {_providerUri}"); 

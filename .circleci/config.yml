@@ -75,7 +75,7 @@ workflows:
       #     name: copy
       #     requires:
       #       - tests
-      - pactflow:
-          name: pact
-          requires:
-            - tests
+      # - pactflow:
+      #     name: pact
+      #     requires:
+      #       - tests
