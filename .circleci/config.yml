@@ -33,14 +33,22 @@ jobs:
       #     command: |
       #       bash .circleci/canideploy.sh providerdotnet
 
+  # pactflow:
+  #   executor: pactfoundation
+  #   steps:
+  #     - run:
+  #         name: canideploy
+  #         command: |
+  #           PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
+  #           ${PACT_CLI}
+
   pactflow:
     executor: pactfoundation
     steps:
       - run:
           name: canideploy
           command: |
-            PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
-            ${PACT_CLI}
+            bash .circleci/canideploy.sh providerdotnet
 
   # copy:
   #   docker:
