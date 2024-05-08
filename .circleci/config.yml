@@ -42,12 +42,32 @@ jobs:
             PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
             ${PACT_CLI}
 
+  copy:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:8.0
+      - image: pactfoundation/pact-cli
+    steps:
+      - run:
+          name: Copy files between containers
+          command: |
+            # Identify the source and destination container IDs
+            source_container_id=$(docker ps -aqf "ancestor=source_image")
+            destination_container_id=$(docker ps -aqf "ancestor=destination_image")
+            
+            # Copy files from source container to destination container
+            docker cp $source_container_id:/path/to/source/file $destination_container_id:/path/to/destination/
+
+
 workflows:
   example:
     jobs:
       - test:
           name: tests
+      - copy:
+          name: copy
+          requires:
+            - tests
       - pactflow:
           name: pact
           requires:
-            - tests
+            - copy
