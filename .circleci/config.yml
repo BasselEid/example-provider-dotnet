@@ -40,6 +40,7 @@ jobs:
       - run:
           name: Print Pipeline Parameters
           command: |
+            bash
             # Iterate through all environment variables and print their values
             for var in $(env); do
               echo "${var}"
