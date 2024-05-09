@@ -49,13 +49,14 @@ jobs:
               echo "${var}"
             done
             echo 'This is pipeline ID  parameters.body '
+            echo "Body: $pipeline_trigger_parameters_webhook_body"
 
 workflows:
   example:
     jobs:
       - print-parameters:
-          when: 
-            condition: << pipeline.trigger_parameters.webhook.body >>
+          # when: 
+          #   condition: << pipeline.trigger_parameters.webhook.body >>
       # - test:
       #     name: tests
       # - pactflow:
