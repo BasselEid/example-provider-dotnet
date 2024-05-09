@@ -4,6 +4,12 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 
+
+parameters:
+  body:
+    type: string
+    default: "current"
+
 executors:
   pactfoundation:
     docker:
