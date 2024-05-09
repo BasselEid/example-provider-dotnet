@@ -13,26 +13,6 @@ executors:
           PACT_BROKER_TOKEN: a0txy_Q79oE5-EDUSMvr_g
 
 jobs:
-  test:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:8.0
-    environment:
-      PACKAGE_VERSION: 1.3.<< pipeline.number >>
-    steps:
-      - checkout
-      - run:
-          name: Test
-          command: |
-            dotnet test tests
-
-  pactflow:
-    executor: pactfoundation
-    steps:
-      - run:
-          name: canideploy
-          command: |
-            PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
-            ${PACT_CLI}
   print-parameters:
     parameters:
       body:
@@ -55,9 +35,9 @@ workflows:
     jobs:
       - print-parameters:
           body: << pipeline.trigger_parameters.webhook.body >>
-      # - test:
-      #     name: tests
-      # - pactflow:
-      #     name: pact
-      #     requires:
-      #       - tests
+      - test:
+          name: tests
+      - pactflow:
+          name: pact
+          requires:
+            - tests
