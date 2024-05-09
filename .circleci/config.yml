@@ -61,7 +61,7 @@ workflows:
     jobs:
       - print-parameters:
           when:
-            condition: <<pipeline.trigger_parameters.webhook.body>>
+            condition: <<pipeline.trigger_parameters>>
       # - test:
       #     name: tests
       # - pactflow:
