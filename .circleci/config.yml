@@ -34,6 +34,10 @@ jobs:
             PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
             ${PACT_CLI}
   print-parameters:
+    parameters:
+      body:
+        default: "nothing"
+        type: string
     docker:
       - image: alpine:latest
     steps:
@@ -44,13 +48,14 @@ jobs:
             for var in $(env); do
               echo "${var}"
             done
-            echo 'This is pipeline ID << pipeline.trigger_parameters.webhook.body >>'
+            echo 'This is pipeline ID << parameters.body >>'
 
 workflows:
   example:
     jobs:
       - print-parameters:
           when: << pipeline.trigger_parameters.webhook.body >>
+          body: << pipeline.trigger_parameters.webhook.body >>
       # - test:
       #     name: tests
       # - pactflow:
