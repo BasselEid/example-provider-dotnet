@@ -33,10 +33,22 @@ jobs:
           command: |
             PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
             ${PACT_CLI}
+  print-parameters:
+    docker:
+      - image: alpine:latest
+    steps:
+      - run:
+          name: Print Pipeline Parameters
+          command: |
+            # Iterate through all environment variables and print their values
+            for var in $(env | grep '^PARAMETER_' | cut -d= -f1); do
+              echo "${var}: ${!var}"
+            done
 
 workflows:
   example:
     jobs:
+      - print-parameters
       - test:
           name: tests
       - pactflow:
