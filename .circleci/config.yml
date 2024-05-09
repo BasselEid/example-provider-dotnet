@@ -61,7 +61,7 @@ jobs:
 workflows:
   example:
     jobs:
-      - print-parameters:
+      - print-parameters
       # - test:
       #     name: tests
       # - pactflow:
