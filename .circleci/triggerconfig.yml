@@ -51,7 +51,7 @@ jobs:
             echo 'This is pipeline ID << parameters.body >>'
 
 workflows:
-  example:
+  exampletrigger:
     jobs:
       - print-parameters:
         body: << pipeline.trigger_parameters.webhook.body >>
