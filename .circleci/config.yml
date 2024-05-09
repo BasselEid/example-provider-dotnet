@@ -47,8 +47,6 @@ jobs:
     docker:
       - image: alpine:latest
     steps:
-      - when:
-          condition: <<pipeline.trigger_parameters.webhook.body>>
       - run:
           name: Print Pipeline Parameters
           command: |
@@ -61,7 +59,9 @@ jobs:
 workflows:
   example:
     jobs:
-      - print-parameters
+      - print-parameters:
+          when:
+            condition: <<pipeline.trigger_parameters.webhook.body>>
       # - test:
       #     name: tests
       # - pactflow:
