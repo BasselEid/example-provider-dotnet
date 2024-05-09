@@ -56,7 +56,7 @@ workflows:
       - print-parameters:
           when:
             and: 
-              -not: << pipeline.trigger_parameters.webhook.body >>
+              -not: << pipeline.trigger_parameters.webhook.bodya >>
       # - test:
       #     name: tests
       # - pactflow:
