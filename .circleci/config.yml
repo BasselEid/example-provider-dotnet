@@ -44,7 +44,7 @@ jobs:
             for var in $(env); do
               echo "${var}"
             done
-            echo "${pipeline.trigger_parameters.circleci.trigger_type}"
+            echo "This is pipeline ID << pipeline.id >>"
 
 workflows:
   example:
