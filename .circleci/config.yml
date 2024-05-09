@@ -4,12 +4,6 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 
-
-parameters:
-  trigger_parameters:
-    type: string
-    default: "current"
-
 executors:
   pactfoundation:
     docker:
@@ -57,11 +51,11 @@ jobs:
             echo 'This is pipeline ID << parameters.body >>'
 
 workflows:
+  when:
+    condition: <<pipeline.trigger_parameters>>
   example:
     jobs:
-      - print-parameters:
-          when:
-            condition: <<pipeline.trigger_parameters>>
+      - print-parameters
       # - test:
       #     name: tests
       # - pactflow:
