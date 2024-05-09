@@ -41,7 +41,7 @@ jobs:
           name: Print Pipeline Parameters
           command: |
             # Iterate through all environment variables and print their values
-            for var in $(env | grep '^PARAMETER_' | cut -d= -f1); do
+            for var in $(env | cut -d= -f1); do
               echo "${var}: ${!var}"
             done
 
