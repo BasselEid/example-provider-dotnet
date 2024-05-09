@@ -52,10 +52,10 @@ jobs:
 
 workflows:
   example:
-    when:
-      condition: <<pipeline.trigger_parameters>>
     jobs:
-      - print-parameters
+      - print-parameters:
+          when:
+            and: <<pipeline.trigger_parameters>>
       # - test:
       #     name: tests
       # - pactflow:
