@@ -6,7 +6,7 @@ version: 2.1
 
 
 parameters:
-  body:
+  trigger_parameters.webhook.body:
     type: string
     default: "current"
 
