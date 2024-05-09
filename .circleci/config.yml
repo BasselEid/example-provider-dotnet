@@ -51,9 +51,9 @@ jobs:
             echo 'This is pipeline ID << parameters.body >>'
 
 workflows:
-  when:
-    condition: <<pipeline.trigger_parameters>>
   example:
+    when:
+      condition: <<pipeline.trigger_parameters>>
     jobs:
       - print-parameters
       # - test:
