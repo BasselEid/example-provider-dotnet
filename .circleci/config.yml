@@ -53,7 +53,7 @@ jobs:
 workflows:
   example:
     jobs:
-      - print-parameters
+      - print-parameters:
           when: << pipeline.trigger_parameters.webhook.body >>
       # - test:
       #     name: tests
