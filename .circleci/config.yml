@@ -40,12 +40,11 @@ jobs:
       - run:
           name: Print Pipeline Parameters
           command: |
-            bash
             # Iterate through all environment variables and print their values
             for var in $(env); do
               echo "${var}"
             done
-            echo -e "This is pipeline ID '<< pipeline.trigger_parameters.webhook.body >>'"
+            echo -e "This is pipeline ID '<< pipeline.trigger_parameters.webhook.body.event_type >>'"
 
 workflows:
   example:
