@@ -49,7 +49,8 @@ jobs:
 workflows:
   example:
     jobs:
-      - print-parameters
+      - print-parameters:
+        requires: << pipeline.trigger_parameters.webhook.body >>
       # - test:
       #     name: tests
       # - pactflow:
