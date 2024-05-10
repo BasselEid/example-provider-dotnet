@@ -14,6 +14,7 @@ case $source in
     *) config_file=".circleci/normalconfig.yml" ;;
 esac
 
+echo $config_file
 
 # Check if the orb file exists
 if [ ! -f "$orb_file" ]; then
