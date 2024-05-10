@@ -4,7 +4,7 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 
-parameters:
+trigger_parameters:
   webhook:
     type: boolean
     default: false
@@ -54,7 +54,7 @@ workflows:
   example:
     jobs:
       - print-parameters:
-          when: << pipeline.parameters.webhook >>
+          when: << pipeline.trigger_parameters.webhook >>
       - test:
           name: tests
       - pactflow:
