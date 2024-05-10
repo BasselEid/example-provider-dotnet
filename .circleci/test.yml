@@ -6,11 +6,22 @@ orbs:
       al:
         docker:
           - image: alpine:latest
-          
-    jobs:
-      print-parameters:
-        executor:
-          name: al
+      dotnetsdk:
+        docker:
+          - image: mcr.microsoft.com/dotnet/sdk:8.0
+            environment:
+              PACKAGE_VERSION: 1.3.<< parameters.buildnumber >>
+        parameters:
+          buildnumber:
+            type: string
+      pactfoundation:
+        docker:
+          - image: pactfoundation/pact-cli
+            environment:
+              PACT_BROKER_BASE_URL: https://beso.pactflow.io
+              PACT_BROKER_TOKEN: a0txy_Q79oE5-EDUSMvr_g
+    commands:
+      print-parameters-command:
         steps:
           - run:
               name: Print Pipeline Parameters
@@ -19,15 +30,44 @@ orbs:
                 for var in $(env); do
                   echo "${var}"
                 done
+    jobs:
+      print-parameters:
+        executor:
+          name: al
+        steps:
+          - print-parameters-command
+      test:
+        parameters:
+          buildnumber:
+            type: string
+        executor: 
+          name: dotnetsdk
+          buildnumber: << parameters.buildnumber >>
+        steps:
+          - checkout
+          - run:
+              name: Test
+              command: |
+                dotnet test tests
+
+      pactflow:
+        executor: pactfoundation
+        steps:
+          - run:
+              name: canideploy
+              command: |
+                PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
+                ${PACT_CLI}
 
 
 workflows:
-  exampletrigger:
+  normaltrigger:
     jobs:
       - my-orb/print-parameters
-      # - my-orb/test:
-      #     name: tests
-      # - my-orb/pactflow:
-      #     name: pact
-      #     requires:
-      #       - tests
+      - my-orb/test:
+          name: tests
+          buildnumber: "132456"
+      - my-orb/pactflow:
+          name: pact
+          requires:
+            - tests

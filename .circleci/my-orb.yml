@@ -6,11 +6,14 @@ orbs:
       al:
         docker:
           - image: alpine:latest
-      dotnetsdlk:
+      dotnetsdk:
         docker:
           - image: mcr.microsoft.com/dotnet/sdk:8.0
             environment:
-              PACKAGE_VERSION: 1.3.<< pipeline.number >>
+              PACKAGE_VERSION: 1.3.<< parameters.buildnumber >>
+        parameters:
+          buildnumber:
+            type: string
       pactfoundation:
         docker:
           - image: pactfoundation/pact-cli
@@ -34,7 +37,12 @@ orbs:
         steps:
           - print-parameters-command
       test:
-        executor: dotnetsdlk
+        parameters:
+          buildnumber:
+            type: string
+        executor: 
+          name: dotnetsdk
+          buildnumber: << parameters.buildnumber >>
         steps:
           - checkout
           - run:
@@ -50,7 +58,3 @@ orbs:
               command: |
                 PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
                 ${PACT_CLI}
-          - run:
-              command: |
-                echo << pipeline.trigger_source >>
-                echo << pipeline.trigger_parameters.circleci.trigger_type >>

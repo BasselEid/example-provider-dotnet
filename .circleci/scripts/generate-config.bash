@@ -3,7 +3,7 @@
 source=$1
 
 
-echo $source
+# echo $source
 
 # Define the file paths
 orb_file=".circleci/my-orb.yml"
@@ -14,7 +14,7 @@ case $source in
     *) config_file=".circleci/normalconfig.yml" ;;
 esac
 
-echo $config_file
+# echo $config_file
 
 # Check if the orb file exists
 if [ ! -f "$orb_file" ]; then
