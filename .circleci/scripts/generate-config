@@ -2,13 +2,16 @@
 
 source=$1
 
+
+echo "Here"
+
 # Define the file paths
-orb_file="my-orb.yaml"
-config_file="webhookconfig.yml"
+orb_file=".circleci/my-orb.yaml"
+config_file=".circleci/webhookconfig.yml"
 
 case $source in 
-    webhook) config_file="webhookconfig.yml" ;;
-    *) config_file="normalconfig.yml" ;;
+    webhook) config_file=".circleci/webhookconfig.yml" ;;
+    *) config_file=".circleci/normalconfig.yml" ;;
 esac
 
 
