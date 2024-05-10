@@ -54,7 +54,7 @@ workflows:
   example:
     jobs:
       - print-parameters:
-          when: << pipeline.trigger_parameters.webhook >>
+          when: << pipeline.parameters.webhook >>
       - test:
           name: tests
       - pactflow:
