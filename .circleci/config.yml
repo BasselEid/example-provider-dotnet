@@ -4,6 +4,11 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 
+trigger_parameters:
+  webhook:
+    type: boolean
+    default: false
+
 executors:
   pactfoundation:
     docker:
@@ -48,7 +53,8 @@ jobs:
 workflows:
   example:
     jobs:
-      - print-parameters
+      - print-parameters:
+          when: << pipeline.trigger_parameters.webhook >>
       - test:
           name: tests
       - pactflow:
