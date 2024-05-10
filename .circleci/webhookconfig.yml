@@ -23,6 +23,7 @@ workflows:
           body: << pipeline.trigger_parameters.webhook.body >>
       - my-orb/test:
           name: tests
+          buildnumber: "132456"
       - my-orb/pactflow:
           name: pact
           requires:
