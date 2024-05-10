@@ -14,10 +14,10 @@ jobs:
 workflows:
   exampletrigger:
     jobs:
-      - print-parameters
-      - test:
+      - my-orb/print-parameters
+      - my-orb/test:
           name: tests
-      - pactflow:
+      - my-orb/pactflow:
           name: pact
           requires:
             - tests

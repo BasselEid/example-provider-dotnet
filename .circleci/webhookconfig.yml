@@ -21,9 +21,9 @@ workflows:
     jobs:
       - print-parameters:
           body: << pipeline.trigger_parameters.webhook.body >>
-      - test:
+      - my-orb/test:
           name: tests
-      - pactflow:
+      - my-orb/pactflow:
           name: pact
           requires:
             - tests
