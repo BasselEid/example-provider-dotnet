@@ -18,6 +18,7 @@ jobs:
           name: Generate config
           command: |
             .circleci/scripts/generate-config.bash '<< pipeline.trigger_parameters.circleci.trigger_type >>' > generated_config.yml
+            echo generated_config.yml
       - continuation/continue:
           configuration_path: generated_config.yml # use newly generated config to continue
 
