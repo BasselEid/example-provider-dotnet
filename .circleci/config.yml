@@ -4,7 +4,7 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 
-trigger_parameters:
+parameters:
   webhook:
     type: boolean
     default: false
