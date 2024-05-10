@@ -6,7 +6,7 @@ source=$1
 echo "Here"
 
 # Define the file paths
-orb_file=".circleci/my-orb.yaml"
+orb_file=".circleci/my-orb.yml"
 config_file=".circleci/webhookconfig.yml"
 
 case $source in 
