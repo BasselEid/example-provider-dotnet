@@ -4,10 +4,11 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 
-trigger_parameters:
-  webhook:
-    type: boolean
-    default: false
+parameters:
+  trigger_parameters:
+    webhook:
+      type: boolean
+      default: false
 
 executors:
   pactfoundation:
