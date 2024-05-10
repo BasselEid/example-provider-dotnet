@@ -64,6 +64,7 @@ jobs:
       - run:
           command: |
             echo << pipeline.trigger_source >>
+            echo << pipeline.trigger_parameters.circleci.trigger_type >>
   # print-parameters:
   #   docker:
   #     - image: alpine:latest
