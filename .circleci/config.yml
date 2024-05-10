@@ -4,11 +4,33 @@
 # Stacks detected: cicd:github-actions:.github/workflows
 version: 2.1
 
-parameters:
-  trigger_parameters:
-    webhook:
-      type: boolean
-      default: false
+# setup: true
+
+# orbs:
+#   continuation: circleci/continuation@0.1.2
+
+orbs:
+  my-orb:
+    executors:
+      al:
+        docker:
+          - image: alpine:latest
+    commands:
+      print-parameters-command:
+        steps:
+          - run:
+              name: Print Pipeline Parameters
+              command: |
+                # Iterate through all environment variables and print their values
+                for var in $(env); do
+                  echo "${var}"
+                done
+    jobs:
+      print-parameters:
+        executor:
+          name: al
+        steps:
+          - print-parameters-command
 
 executors:
   pactfoundation:
@@ -39,23 +61,27 @@ jobs:
           command: |
             PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider --version ${CIRCLE_SHA1} --to-environment production"
             ${PACT_CLI}
-  print-parameters:
-    docker:
-      - image: alpine:latest
-    steps:
       - run:
-          name: Print Pipeline Parameters
           command: |
-            # Iterate through all environment variables and print their values
-            for var in $(env); do
-              echo "${var}"
-            done
+            echo << pipeline.trigger_source >>
+  # print-parameters:
+  #   docker:
+  #     - image: alpine:latest
+  #   steps:
+  #     - run:
+  #         name: Print Pipeline Parameters
+  #         command: |
+  #           # Iterate through all environment variables and print their values
+  #           for var in $(env); do
+  #             echo "${var}"
+  #           done
+
+
 
 workflows:
   example:
     jobs:
-      - print-parameters:
-          when: << pipeline.trigger_parameters.webhook >>
+      - my-orb/print-parameters
       - test:
           name: tests
       - pactflow:
