@@ -1,0 +1,23 @@
+jobs:
+  print-parameters:
+    docker:
+      - image: alpine:latest
+    steps:
+      - run:
+          name: Print Pipeline Parameters
+          command: |
+            # Iterate through all environment variables and print their values
+            for var in $(env); do
+              echo "${var}"
+            done
+
+workflows:
+  exampletrigger:
+    jobs:
+      - print-parameters
+      - test:
+          name: tests
+      - pactflow:
+          name: pact
+          requires:
+            - tests

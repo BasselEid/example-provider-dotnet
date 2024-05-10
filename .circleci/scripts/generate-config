@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+source=$1
+
+# Define the file paths
+orb_file="my-orb.yaml"
+config_file="webhookconfig.yml"
+
+case $source in 
+    webhook) config_file="webhookconfig.yml" ;;
+    *) config_file="normalconfig.yml" ;;
+esac
+
+
+# Check if the orb file exists
+if [ ! -f "$orb_file" ]; then
+  echo "Error: $orb_file not found."
+  exit 1
+fi
+
+# Check if the config file exists
+if [ ! -f "$config_file" ]; then
+  echo "Error: $config_file not found."
+  exit 1
+fi
+
+# Read the contents of the orb file
+orb_content=$(<"$orb_file")
+
+
+echo "$orb_content" | cat - "$config_file"
