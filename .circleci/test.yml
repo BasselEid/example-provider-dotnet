@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  my-orb:
+    executors:
+      al:
+        docker:
+          - image: alpine:latest
+          
+    jobs:
+      print-parameters:
+        executor:
+          name: al
+        steps:
+          - run:
+              name: Print Pipeline Parameters
+              command: |
+                # Iterate through all environment variables and print their values
+                for var in $(env); do
+                  echo "${var}"
+                done
+
+
+workflows:
+  exampletrigger:
+    jobs:
+      - my-orb/print-parameters
+      # - my-orb/test:
+      #     name: tests
+      # - my-orb/pactflow:
+      #     name: pact
+      #     requires:
+      #       - tests

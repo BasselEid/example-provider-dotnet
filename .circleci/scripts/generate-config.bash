@@ -3,7 +3,7 @@
 source=$1
 
 
-echo "Here"
+echo $source
 
 # Define the file paths
 orb_file=".circleci/my-orb.yml"
