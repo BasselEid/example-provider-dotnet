@@ -55,11 +55,19 @@ orbs:
                 echo $PACT_URL
                 dotnet test tests
 
-      pactflow:
+      pact-can-i-deploy:
         executor: pactfoundation
         steps:
           - run:
               name: canideploy
               command: |
                 PACT_CLI="pact broker can-i-deploy --pacticipant pactflow-example-provider-dotnet --version ${CIRCLE_SHA1} --to-environment production"
+                ${PACT_CLI}
+      pact-deploy:
+        executor: pactfoundation
+        steps:
+          - run:
+              name: deploy
+              command: |
+                PACT_CLI="pact broker record_deployment --pacticipant pactflow-example-provider-dotnet --version ${CIRCLE_SHA1} --to-environment production"
                 ${PACT_CLI}

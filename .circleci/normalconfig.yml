@@ -19,7 +19,11 @@ workflows:
       - my-orb/test:
           name: tests
           buildnumber: "132456"
-      - my-orb/pactflow:
-          name: pact
+      - my-orb/pact-can-i-deploy:
+          name: pact-can-i-deploy
           requires:
             - tests
+      - my-orb/pact-deploy:
+          name: pact-deploy
+          requires:
+            - pact
