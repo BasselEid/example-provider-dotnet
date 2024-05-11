@@ -55,6 +55,8 @@ workflows:
       - my-orb/test:
           name: tests
           buildnumber: "132456"
+          requires:
+            - print-parameters
       # - my-orb/pactflow:
       #     name: pact
       #     requires:
