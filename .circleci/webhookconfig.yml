@@ -33,6 +33,9 @@ workflows:
     jobs:
       - print-parameters:
           body: << pipeline.trigger_parameters.webhook.body >>
+      - downstream-job:
+          requires:
+            - print-parameters
       - my-orb/test:
           name: tests
           buildnumber: "132456"
