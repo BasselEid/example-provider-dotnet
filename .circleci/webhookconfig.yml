@@ -19,8 +19,11 @@ jobs:
             pact_url=$(echo "${body}" | jq -r '.event_type')
             echo "Extracted pact URL: $pact_url"
             echo "export PACT_URL=$pact_url" >> $BASH_ENV
+            echo $PACT_URL
+            printenv PACT_URL
       - run: |
           cp $BASH_ENV bash.env
+          cat bash.env
       - persist_to_workspace:
           root: .
           paths:
@@ -32,11 +35,14 @@ jobs:
       - attach_workspace:
           at: .
       - run: |
+          ls
+          cat bash.env
           cat bash.env >> $BASH_ENV
       - run:
           name: Use extracted pact URL
           command: |
             echo "Pact URL: $PACT_URL"
+            printenv PACT_URL
 
 workflows:
   webhooktrigger:
