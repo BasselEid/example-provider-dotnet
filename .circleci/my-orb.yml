@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  jq: circleci/jq@3.0.0
   my-orb:
     executors:
       al:
