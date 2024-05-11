@@ -5,10 +5,8 @@ jobs:
         default: "nothing"
         type: string
     docker:
-      - image: alpine:latest
+      - image: cimg/base:2021.04
     steps:
-      - jq/install:
-          version: jq-1.7
       - run:
           name: Print Pipeline Parameters
           command: |
