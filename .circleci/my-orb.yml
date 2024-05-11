@@ -45,9 +45,9 @@ orbs:
           name: dotnetsdk
           buildnumber: << parameters.buildnumber >>
         steps:
+          - checkout
           - attach_workspace:
               at: .
-          - checkout
           - run:
               name: Test
               command: |
