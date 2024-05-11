@@ -52,9 +52,9 @@ workflows:
       - downstream-job:
           requires:
             - print-parameters
-      # - my-orb/test:
-      #     name: tests
-      #     buildnumber: "132456"
+      - my-orb/test:
+          name: tests
+          buildnumber: "132456"
       # - my-orb/pactflow:
       #     name: pact
       #     requires:

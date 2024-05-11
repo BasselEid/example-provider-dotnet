@@ -45,10 +45,13 @@ orbs:
           name: dotnetsdk
           buildnumber: << parameters.buildnumber >>
         steps:
+          - attach_workspace:
+            at: .
           - checkout
           - run:
               name: Test
               command: |
+                [ -f "bash.env" ] && source bash.env
                 dotnet test tests
 
       pactflow:
