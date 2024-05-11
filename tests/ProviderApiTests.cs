@@ -60,7 +60,7 @@ namespace tests
             string pactFile = System.Environment.GetEnvironmentVariable("PACT_FILE");
             string providerName = !String.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME"))
                                     ? System.Environment.GetEnvironmentVariable("PACT_PROVIDER_NAME")
-                                    : "pactflow-example-provider";
+                                    : "pactflow-example-provider-dotnet";
             string version = Environment.GetEnvironmentVariable("CIRCLE_SHA1");
             string branch = Environment.GetEnvironmentVariable("GIT_BRANCH") ?? "master";
             string buildUri = 
