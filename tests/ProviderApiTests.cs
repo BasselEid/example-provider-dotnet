@@ -78,6 +78,18 @@ namespace tests
             _outputHelper.WriteLine($"branch: {branch}"); 
             _outputHelper.WriteLine($"buildUri: {buildUri}");
 
+            
+            Console.WriteLine($"TEST"); 
+            Console.WriteLine($"_providerUri: {_providerUri}"); 
+            Console.WriteLine($"pactbaseUrl: {pactbaseUrl}"); 
+            Console.WriteLine($"token: {token}"); 
+            Console.WriteLine($"pactUrl: {pactUrl}"); 
+            Console.WriteLine($"pactFile: {pactFile}"); 
+            Console.WriteLine($"providerName: {providerName}"); 
+            Console.WriteLine($"version: {version}"); 
+            Console.WriteLine($"branch: {branch}"); 
+            Console.WriteLine($"buildUri: {buildUri}");
+            
             if (pactFile != "" && pactFile != null)
             // Verify a local file, provided by PACT_FILE, verification results are never published
             // This step does not require a Pact Broker
