@@ -19,10 +19,20 @@ jobs:
             pact_url=$(echo "${body}" | jq -r '.event_type')
             echo "Extracted pact URL: $pact_url"
             echo "export PACT_URL=$pact_url" >> $BASH_ENV
+      - run: |
+          cp $BASH_ENV bash.env
+      - persist_to_workspace:
+          root: .
+          paths:
+            - bash.env
   downstream-job:
     docker:
       - image: alpine:latest
     steps:
+      - attach_workspace:
+          at: .
+      - run: |
+          cat bash.env >> $BASH_ENV
       - run:
           name: Use extracted pact URL
           command: |
