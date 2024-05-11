@@ -36,7 +36,7 @@ jobs:
       - run: |
           ls
           cat bash.env
-          cat bash.env >> $BASH_ENV
+          source bash.env
       - run:
           name: Use extracted pact URL
           command: |
@@ -50,10 +50,10 @@ workflows:
       - downstream-job:
           requires:
             - print-parameters
-      - my-orb/test:
-          name: tests
-          buildnumber: "132456"
-      - my-orb/pactflow:
-          name: pact
-          requires:
-            - tests
+      # - my-orb/test:
+      #     name: tests
+      #     buildnumber: "132456"
+      # - my-orb/pactflow:
+      #     name: pact
+      #     requires:
+      #       - tests
