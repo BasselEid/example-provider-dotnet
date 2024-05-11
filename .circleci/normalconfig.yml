@@ -16,10 +16,10 @@ workflows:
   normaltrigger:
     jobs:
       - my-orb/print-parameters
-      # - my-orb/test:
-      #     name: tests
-      #     buildnumber: "132456"
-      # - my-orb/pactflow:
-      #     name: pact
-      #     requires:
-      #       - tests
+      - my-orb/test:
+          name: tests
+          buildnumber: "132456"
+      - my-orb/pactflow:
+          name: pact
+          requires:
+            - tests

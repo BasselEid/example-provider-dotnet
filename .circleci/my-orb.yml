@@ -52,6 +52,7 @@ orbs:
               name: Test
               command: |
                 [ -f "bash.env" ] && source bash.env
+                echo $PACT_URL
                 dotnet test tests
 
       pactflow:
