@@ -7,6 +7,8 @@ jobs:
     docker:
       - image: alpine:latest
     steps:
+      - jq/install:
+          version: jq-1.7
       - run:
           name: Print Pipeline Parameters
           command: |
@@ -22,8 +24,6 @@ jobs:
     docker:
       - image: alpine:latest
     steps:
-      - jq/install:
-          version: jq-1.7
       - run:
           name: Use extracted pact URL
           command: |
