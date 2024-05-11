@@ -26,4 +26,4 @@ workflows:
       - my-orb/pact-deploy:
           name: pact-deploy
           requires:
-            - pact
+            - pact-can-i-deploy
