@@ -69,5 +69,5 @@ orbs:
           - run:
               name: deploy
               command: |
-                PACT_CLI="pact broker record_deployment --pacticipant pactflow-example-provider-dotnet --version ${CIRCLE_SHA1} --to-environment production"
+                PACT_CLI="pact broker record_deployment --pacticipant pactflow-example-provider-dotnet --version ${CIRCLE_SHA1} --environment production"
                 ${PACT_CLI}
