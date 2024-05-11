@@ -20,7 +20,6 @@ jobs:
             echo "Extracted pact URL: $pact_url"
             echo "export PACT_URL=$pact_url" >> $BASH_ENV
             echo $PACT_URL
-            printenv PACT_URL
       - run: |
           cp $BASH_ENV bash.env
           cat bash.env
@@ -42,7 +41,6 @@ jobs:
           name: Use extracted pact URL
           command: |
             echo "Pact URL: $PACT_URL"
-            printenv PACT_URL
 
 workflows:
   webhooktrigger:
