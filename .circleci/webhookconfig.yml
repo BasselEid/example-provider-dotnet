@@ -38,10 +38,10 @@ jobs:
           cat bash.env
           source bash.env
           echo "Pact URL: $PACT_URL"
-      # - run:
-      #     name: Use extracted pact URL
-      #     command: |
-      #       echo "Pact URL: $PACT_URL"
+      - run:
+          name: Use extracted pact URL
+          command: |
+            echo "Pact URL: $PACT_URL"
 
 workflows:
   webhooktrigger:
