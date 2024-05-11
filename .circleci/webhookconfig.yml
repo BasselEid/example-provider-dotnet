@@ -38,8 +38,7 @@ jobs:
           cat bash.env
           source bash.env
           echo "Pact URL: $PACT_URL"
-          export PACT_URL
-          echo "export PACT_URL=$pact_url" >> $BASH_ENV
+          export PACT_URL=$PACT_URL
       - run:
           name: Use extracted pact URL
           command: |
