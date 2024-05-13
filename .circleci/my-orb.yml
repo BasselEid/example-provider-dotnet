@@ -19,8 +19,8 @@ orbs:
         docker:
           - image: pactfoundation/pact-cli
             environment:
-              PACT_BROKER_BASE_URL: https://beso.pactflow.io
-              PACT_BROKER_TOKEN: a0txy_Q79oE5-EDUSMvr_g
+              PACT_BROKER_BASE_URL: $PACT_BROKER_BASE_URL
+              PACT_BROKER_TOKEN: $PACT_BROKER_TOKEN
     commands:
       print-parameters-command:
         steps:
